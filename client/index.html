@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en" ng-app="todoApp">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <!--BEGIN BOWER COMPONENTS CSS-->
+    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="/bower_components/font-awesome/css/font-awesome.min.css"/>
+    <!--END BOWER COMPONENTS CSS-->
+
+    <!--BEGIN CSS-->
+    <link rel="stylesheet" href="/app/app.css"/>
+    <!--END CSS-->
+
+
+</head>
+<body>
+
+<div class="container" ng-controller="TodoCtrl as ctrl">
+    <hr/>
+    <div class="row">
+        <div class="col-xs-12">
+            <h1 style="text-align: center">TODO APP</h1>
+        </div>
+    </div>
+    <hr/>
+    <div class="row">
+        <form name="todoForm" ng-submit="ctrl.submit() && todoForm.$valid">
+            <div class="col-xs-5">
+                <input type="text" class="form-control" placeholder="Name goes here" ng-model="ctrl.newTodo.taskName"
+                       required/>
+            </div>
+            <div class="col-xs-2">
+                <select class="form-control" required ng-model="ctrl.newTodo.priority">
+                    <option value="" selected disabled>
+                        PRIORITY
+                    </option>
+                    <option value="HIGH">
+                        HIGH
+                    </option>
+                    <option value="MEDIUM">
+                        MEDIUM
+                    </option>
+                    <option value="LOW">
+                        LOW
+                    </option>
+                </select>
+            </div>
+            <div class="col-xs-3">
+                <input type="date" class="form-control" ng-model="ctrl.newTodo.dueDate" required/>
+            </div>
+            <div class="col-xs-2">
+                <button class="btn btn-primary" type="submit">&nbsp;Add&nbsp;</button>
+                <button class="btn btn-default" type="reset">Reset</button>
+            </div>
+        </form>
+    </div>
+    <hr/>
+    <div class="row todo-list ng-hide" ng-show="ctrl.todos.length">
+        <div class="col-sm-6 col-md-4" data-ng-repeat="todo in ctrl.todos" class="todo-list">
+            <div class="thumbnail">
+                <h3>{{todo.taskName}}</h3>
+
+                <div style="margin-top: 20px;">
+                    <div class="input-group">
+                        <input type="date" class="form-control" ng-model="todo.dueDate"/>
+                    <span class="input-group-btn">
+                        <select class="form-control due-date" required ng-model="todo.priority">
+                            <option value="HIGH">
+                                HIGH
+                            </option>
+                            <option value="MEDIUM">
+                                MEDIUM
+                            </option>
+                            <option value="LOW">
+                                LOW
+                            </option>
+                        </select>
+                    </span>
+                    <span class="input-group-btn">
+                        <a class="btn btn-danger" data-ng-click="ctrl.remove($index)">
+                            <span class="glyphicon glyphicon-trash"></span>
+                        </a>
+                    </span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--BEGIN BOWER COMPONENTS JS-->
+<script src="/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="/bower_components/angular/angular.min.js"></script>
+<script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+
+<!--END BOWER COMPONENTS JS-->
+
+
+<!--BEGIN SOURCE JS-->
+<script src="/app/app.js"></script>
+<!--END SOURCE JS-->
+</body>
+</html>

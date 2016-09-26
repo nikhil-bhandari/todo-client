@@ -1,0 +1,14 @@
+.todo-list .thumbnail{
+    padding: 20px;
+}
+.todo-list .thumbnail h3{
+    margin: 0; padding: 0;min-height: 75px;
+}
+
+.todo-list .thumbnail .due-date{
+    width: 100px;
+}
+
+.ng-hide{
+    display: none;
+}
