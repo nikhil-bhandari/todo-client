@@ -1,10 +1,8 @@
 {
   "name": "todo",
-  "description": "",
+  "description": "Simple todo app",
   "main": "index.js",
-  "authors": [
-    "Nikhil Bhandari <nikhil.bhandari@intelligrape.com>"
-  ],
+  "author": "NUS ISS StackUp",
   "license": "ISC",
   "homepage": "",
   "ignore": [
