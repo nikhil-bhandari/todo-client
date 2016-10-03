@@ -4,7 +4,7 @@
   "description": "Simple todo app",
   "main": "server/app.js",
   "scripts": {
-    "start": "node server/app.js",
+    "start": "npm install -g bower; bower install;node server/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "NUS ISS StackUp",
