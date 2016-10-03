@@ -1,13 +1,11 @@
-(function(){
-    var app = angular.module("todoApp", [
+(function () {
+    var app = angular.module("todoApp", []);
 
-    ]);
-
-    app.controller("TodoCtrl", [function(){
+    app.controller("TodoCtrl", [function () {
         var self = this;
 
         self.todos = [];
-        self.newTodo = {};
+        self.newTodo = {completed: false};
 
         self.remove = function (index) {
             self.todos.splice(index, 1);
@@ -15,7 +13,7 @@
 
         self.submit = function () {
             self.todos.push(self.newTodo);
-            self.newTodo = {};
+            self.newTodo = {completed: false};
         };
     }]);
 }());

@@ -9,6 +9,14 @@
     width: 100px;
 }
 
+.todo-list{
+    min-height: 233px;
+}
+
 .ng-hide{
     display: none;
+}
+
+.todo-list.completed h3{
+    text-decoration: line-through;
 }

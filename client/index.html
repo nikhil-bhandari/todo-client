@@ -17,7 +17,7 @@
 </head>
 <body>
 
-<div class="container" ng-controller="TodoCtrl as ctrl">
+<div class="container ng-hide" ng-controller="TodoCtrl as ctrl"  ng-show="ctrl">
     <hr/>
     <div class="row">
         <div class="col-xs-12">
@@ -57,32 +57,75 @@
         </form>
     </div>
     <hr/>
-    <div class="row todo-list ng-hide" ng-show="ctrl.todos.length">
-        <div class="col-sm-6 col-md-4" data-ng-repeat="todo in ctrl.todos" class="todo-list">
+    <h1>Incomplete Tasks</h1>
+    <hr/>
+    <div class="row todo-list">
+        <div class="col-sm-6 col-md-4" data-ng-repeat="todo in ctrl.todos | filter:{completed:false}" class="todo-list">
             <div class="thumbnail">
                 <h3>{{todo.taskName}}</h3>
 
                 <div style="margin-top: 20px;">
+                    <div style="padding-bottom: 20px;">
+                        <b>Priority:</b> &nbsp;
+                        High: <input type="radio" name="priority-incomplete-{{$index}}" ng-model="todo.priority" value="HIGH"/>&nbsp;
+                        Medium: <input type="radio" name="priority-incomplete-{{$index}}" ng-model="todo.priority" value="MEDIUM"/>&nbsp;
+                        Low: <input type="radio" name="priority-incomplete-{{$index}}" ng-model="todo.priority" value="LOW"/>&nbsp;
+                    </div>
                     <div class="input-group">
+                        <span class="input-group-btn">
+                            <div class="btn-group" role="group" aria-label="...">
+                                <a class="btn btn-success" data-ng-click="todo.completed = true">
+                                    <span class="glyphicon glyphicon-ok"></span>
+                                </a>
+                            </div>
+                        </span>
+
                         <input type="date" class="form-control" ng-model="todo.dueDate"/>
-                    <span class="input-group-btn">
-                        <select class="form-control due-date" required ng-model="todo.priority">
-                            <option value="HIGH">
-                                HIGH
-                            </option>
-                            <option value="MEDIUM">
-                                MEDIUM
-                            </option>
-                            <option value="LOW">
-                                LOW
-                            </option>
-                        </select>
-                    </span>
-                    <span class="input-group-btn">
-                        <a class="btn btn-danger" data-ng-click="ctrl.remove($index)">
-                            <span class="glyphicon glyphicon-trash"></span>
-                        </a>
-                    </span>
+                        <span class="input-group-btn">
+                            <div class="btn-group" role="group" aria-label="...">
+                                <a class="btn btn-danger" data-ng-click="ctrl.remove($index)">
+                                    <span class="glyphicon glyphicon-trash"></span>
+                                </a>
+                            </div>
+                        </span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <hr/>
+    <h1>Completed Tasks</h1>
+    <hr/>
+    <div class="row todo-list completed">
+        <div class="col-sm-6 col-md-4" data-ng-repeat="todo in ctrl.todos  | filter:{completed:true}" class="todo-list">
+            <div class="thumbnail">
+                <h3>{{todo.taskName}}</h3>
+
+                <div style="margin-top: 20px;">
+                    <div style="padding-bottom: 20px;">
+                        <b>Priority:</b> &nbsp;
+                        High: <input type="radio" name="priority-complete-{{$index}}" ng-model="todo.priority" value="HIGH"/>&nbsp;
+                        Medium: <input type="radio" name="priority-complete-{{$index}}" ng-model="todo.priority" value="MEDIUM"/>&nbsp;
+                        Low: <input type="radio" name="priority-complete-{{$index}}" ng-model="todo.priority" value="LOW"/>&nbsp;
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-btn">
+                            <div class="btn-group" role="group" aria-label="...">
+                                <a class="btn btn-danger" data-ng-click="todo.completed = false">
+                                    <span class="glyphicon glyphicon-remove"></span>
+                                </a>
+                            </div>
+                        </span>
+
+                        <input type="date" class="form-control" ng-model="todo.dueDate"/>
+                        <span class="input-group-btn">
+                            <div class="btn-group" role="group" aria-label="...">
+                                <a class="btn btn-danger" data-ng-click="ctrl.remove($index)">
+                                    <span class="glyphicon glyphicon-trash"></span>
+                                </a>
+                            </div>
+                        </span>
                     </div>
                 </div>
 
