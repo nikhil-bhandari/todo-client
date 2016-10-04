@@ -4,7 +4,7 @@
   "description": "Simple todo app",
   "main": "server/app.js",
   "scripts": {
-    "start": "npm install -g bower; bower install;node server/app.js",
+    "start": "npm install -g bower; bower install;node server/app.js"
   },
   "author": "NUS ISS StackUp",
   "license": "ISC",
